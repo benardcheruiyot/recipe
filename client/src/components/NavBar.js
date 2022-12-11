@@ -68,17 +68,14 @@ const NavBar = () => {
 
             {!user?.id ? (
               <>
-                <button
-                  className="nav__link nav__linkRegister"
-                  onClick={handleShow}
-                >
-                    Sign Up
+                <button className="nav_button" onClick={handleShow}>
+                  Sign Up
                 </button>
               </>
             ) : (
               <>
-                <button className="nav__link nav__linkRegister" onClick={handleLogout}>
-                    Logout
+                <button className="nav_button" onClick={handleLogout}>
+                  Logout
                 </button>
               </>
             )}

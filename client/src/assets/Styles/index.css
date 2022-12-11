@@ -155,6 +155,20 @@ font-family: 'Creepster', cursive;
   color: var(--primary-color) !important;
 }
 
+.nav_button{
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.35rem;
+  color: #fff;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+
+
 .link__title:hover {
   color: var(--primary-color);
 }
