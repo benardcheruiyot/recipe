@@ -34,7 +34,7 @@ const Login = ({
   handleLogout,
 }) => {
   const navigate = useNavigate();
-  const {login} = useUser()
+  const { login } = useUser();
 
   const handleCSubmit = (values) => {
     console.log(values.username);
@@ -47,37 +47,36 @@ const Login = ({
     }
   };
 
-  const { handleSubmit, values, handleBlur, handleChange, errors, touched } = useFormik({
-    initialValues,
-    validationSchema: signupSchema,
-    onSubmit: (values, actions) => {
-      actions.resetForm();
-      // handleCSubmit(values);
-      
-      fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          username: values.username,
-          password: values.password,
-        }),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => login(user));
-        }
-      });
+  const { handleSubmit, values, handleBlur, handleChange, errors, touched } =
+    useFormik({
+      initialValues,
+      validationSchema: signupSchema,
+      onSubmit: (values, actions) => {
+        actions.resetForm();
+        // handleCSubmit(values);
 
-      handleLoginClose();
-      toast.success("login Successful");
-      // handleLogout();
-      navigate("/dashboard");
-    },
-  });
+        fetch("https://recipe-be.onrender.com/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            username: values.username,
+            password: values.password,
+          }),
+        }).then((r) => {
+          if (r.ok) {
+            r.json().then((user) => login(user));
+          }
+        });
 
-  
+        handleLoginClose();
+        toast.success("login Successful");
+        // handleLogout();
+        navigate("/dashboard");
+      },
+    });
 
   return (
     <>
@@ -128,7 +127,9 @@ const Login = ({
             </div>
           </Modal.Body>
           <Modal.Footer className="submit__btn">
-            <Button onClick={handleSubmit} type="submit">Login</Button>
+            <Button onClick={handleSubmit} type="submit">
+              Login
+            </Button>
             <div className="d-flex align-items-center justify-content-center m-auto mt-3">
               <span className="me-3">No account ?</span>
               <span onClick={handleLoginClose}>

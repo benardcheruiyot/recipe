@@ -61,7 +61,7 @@ const AddRecipe = ({ loadRecipes }) => {
       toast.error("please fill all input fields");
     } else {
       // post recipe to our api endpoint
-      axios.post("/recipes", inputs);
+      axios.post("https://recipe-be.onrender.com/recipes", inputs);
 
       // show success message after post to the db
       toast.success("Added successfully");

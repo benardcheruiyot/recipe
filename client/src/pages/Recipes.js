@@ -17,7 +17,7 @@ const Recipe = () => {
   };
 
   const load = useCallback(async () => {
-    const res = await axios.get(`/recipes`);
+    const res = await axios.get(`https://recipe-be.onrender.com/recipes`);
     setRecipes(res.data);
   }, []);
 

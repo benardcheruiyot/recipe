@@ -10,10 +10,14 @@ const useProvideUser = () => {
   const [user, setUser] = React.useState(null);
 
   const reload = useCallback(() => {
-    axios.get("/me").then((response) => {
-      setUser(response.data);
-    })
-    .catch((error) => {console.log(error)});
+    axios
+      .get("/me")
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   useEffect(() => {
@@ -25,11 +29,13 @@ const useProvideUser = () => {
   };
 
   const handleRegLogout = () => {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        toast.success("Logout Successful");
+    fetch("https://recipe-be.onrender.com/logout", { method: "DELETE" }).then(
+      (r) => {
+        if (r.ok) {
+          toast.success("Logout Successful");
+        }
       }
-    });
+    );
   };
 
   const logout = () => {
